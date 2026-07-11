@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Julius Assistant - Tutor de Programación</title>
+    <!-- Cargamos Tailwind CSS para un diseño moderno y responsive -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f3f4f6; }
+        
+        /* Animación para el indicador de escritura de Julius */
+        .typing-indicator span {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background-color: #9ca3af;
+            border-radius: 50%;
+            margin: 0 2px;
+            animation: bounce 1.4s infinite ease-in-out both;
+        }
+        .typing-indicator span:nth-child(1) { animation-delay: -0.32s; }
+        .typing-indicator span:nth-child(2) { animation-delay: -0.16s; }
+        @keyframes bounce {
+            0%, 80%, 100% { transform: scale(0); }
+            40% { transform: scale(1); }
+        }
+
+        /* Estilos para renderizar el formato Markdown que devuelve Gemini */
+        .markdown-body p { margin-bottom: 0.75rem; }
+        .markdown-body strong { font-weight: 600; color: #111827; }
+        .markdown-body ul { list-style-type: disc; margin-left: 1.5rem; margin-bottom: 0.75rem; }
+        .markdown-body ol { list-style-type: decimal; margin-left: 1.5rem; margin-bottom: 0.75rem; }
+        .markdown-body code { background-color: #e5e7eb; padding: 0.2rem 0.4rem; border-radius: 0.25rem; font-family: monospace; color: #b91c1c; }
+        .markdown-body pre { background-color: #1f2937; color: #f8fafc; padding: 1rem; border-radius: 0.5rem; overflow-x: auto; margin-bottom: 1rem; }
+        .markdown-body pre code { background-color: transparent; color: inherit; padding: 0; }
+
+        /* Animación de fade-in para mensajes */
+        .animate-fade-in {
+            animation: fadeIn 0.3s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="h-screen flex items-center justify-center p-4">
+
+    <!-- Contenedor Principal (Simula cómo se verá incrustado en Moodle) -->
+    <div class="w-full max-w-4xl h-[90vh] bg-white rounded-2xl shadow-2xl flex flex-col overflow-hidden border border-gray-200">
+        
+        <!-- Cabecera con el Avatar de Julius -->
+        <div class="bg-gradient-to-r from-blue-700 to-blue-500 p-4 text-white flex items-center justify-between shadow-md z-10 flex-shrink-0">
+            <div class="flex items-center space-x-4">
+                <!-- Avatar de Julius -->
+                <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-inner overflow-hidden border-2 border-blue-200 relative">
+                    <img src="https://raw.githubusercontent.com/orfell/Logos/main/JULIUS_01.png" alt="Julius Avatar" class="w-full h-full object-cover">
+                    <!-- Punto verde de estado "En línea" -->
+                    <div class="absolute bottom-0 right-0 w-3 h-3 bg-green-400 border-2 border-white rounded-full"></div>
+                </div>
+                <div>
+                    <h1 class="text-xl font-bold tracking-wide">Julius Assistant</h1>
+                    <p class="text-xs text-blue-100 font-medium">Tutor Socrático de PSeInt • En línea</p>
+                </div>
+            </div>
+            <div class="flex space-x-3 text-blue-100">
+                <button title="Metodología del Semáforo" class="hover:text-white transition"><i class="fas fa-traffic-light"></i></button>
+                <button title="Ayuda" class="hover:text-white transition"><i class="fas fa-question-circle"></i></button>
+            </div>
+        </div>
+
+        <!-- Área de Historial de Chat -->
+        <div id="chat-container" class="flex-1 overflow-y-auto p-6 bg-gray-50 flex flex-col space-y-6">
+            <!-- El mensaje de bienvenida de Julius se inyectará aquí vía JS -->
+        </div>
+
+        <!-- Indicador de que Julius está escribiendo (Oculto por defecto) -->
+        <div id="loading-indicator" class="hidden px-8 pb-4 bg-gray-50 flex-shrink-0">
+            <div class="flex items-center bg-gray-200 text-gray-500 rounded-2xl rounded-bl-none px-4 py-3 w-fit shadow-sm">
+                <span class="text-sm font-medium mr-2">Julius está analizando</span>
+                <div class="typing-indicator flex pt-1">
+                    <span></span><span></span><span></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Área de Entrada de Mensajes -->
+        <div class="bg-white border-t border-gray-200 p-4 flex-shrink-0">
+            <form id="chat-form" class="flex items-end space-x-2 relative">
+                <!-- Avatar del estudiante -->
+                <div class="w-10 h-10 rounded-full bg-blue-100 flex-shrink-0 flex items-center justify-center border border-blue-200 hidden sm:flex">
+                    <i class="fas fa-user-graduate text-blue-500"></i>
+                </div>
+                <div class="flex-1 relative">
+                    <textarea id="user-input" rows="1" class="w-full bg-gray-100 border border-gray-300 text-gray-800 rounded-xl px-4 py-3 pr-12 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white resize-none transition-all" placeholder="Escribe tu problema o pega tu código aquí..." required></textarea>
+                </div>
+                <button type="submit" id="send-btn" class="bg-blue-600 hover:bg-blue-700 text-white rounded-xl px-5 py-3 font-semibold transition-colors shadow-sm flex items-center h-full flex-shrink-0">
+                    <span class="hidden sm:inline mr-2">Enviar</span>
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </form>
+            <div class="text-center mt-2">
+                <span class="text-[10px] text-gray-400">Julius puede cometer errores. Verifica tu lógica.</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ==========================================
+        // CONFIGURACIÓN DEL TUTOR Y API
+        // ==========================================
+        
+        // ¡IMPORTANTE PARA MOODLE! 
+        // Aquí debes pegar la API Key que generes en Google AI Studio.
+        const apiKey = "AQ.Ab8RN6LIb_0tdtmE705ElXzc1LdksF8OLZpW4hXeAlM_7p3cvQ"; 
+        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
+
+        // EL PROMPT MAESTRO (Aquí está inyectada toda tu metodología)
+        const systemPrompt = `Eres Julius Assistant, un tutor universitario experto en programación básica y pedagogía, creado por el profesor Julio Ricardo. Tu objetivo es enseñar lógica de programación usando pseudocódigo (comandos de PSeInt).
+
+REGLAS DE ORO:
+1. NUNCA resuelvas el problema directamente ni entregues código completo corregido.
+2. Usa el método Socrático: responde a los errores con preguntas que hagan pensar al estudiante.
+3. Personalidad: Inicia tu primer mensaje saludando como "¡Hola! Soy Julius Assistant, tu compañero de programación...". Eres paciente, motivador y claro.
+
+METODOLOGÍA DEL SEMÁFORO (Fase de Diseño):
+Cuando el estudiante plantee un problema nuevo, guíalo estrictamente por estas 3 fases en orden, sin pedir código hasta terminar:
+- Fase 1: Salidas (Rojo): Pregunta "¿A dónde tenemos que llegar? ¿Qué pide el problema?".
+- Fase 2: Entradas (Verde): Pregunta "¿Qué variables necesitamos, cómo se llamarán y de qué tipo (Entero, Real, Caracter) son?".
+- Fase 3: Procesos (Amarillo): Pregunta "¿Cómo transformamos las entradas en salidas?". ¡IMPORTANTE! Exige siempre una "Precaución" (ej. validar que no se divida por cero).
+
+FASE DE CODIFICACIÓN EN PSEINT:
+Cuando el semáforo esté aprobado, pide el código y evalúalo bajo la estructura de 7 pasos:
+1. Inicio (Algoritmo nombre)
+2. Definición (Definir x Como Real)
+3. Solicitud (Escribir "ingrese")
+4. Lectura (Leer x)
+5. Operación (Cálculos/Decisiones)
+6. Impresión (Escribir resultado)
+7. Fin (FinAlgoritmo)
+
+MANEJO DE ERRORES:
+Si suben código con errores, NO des la línea corregida. 
+- Prioridad 1 (Estructura/Lógica): Si declaran salidas antes de leer datos, o si olvidan validar división por cero, diles: "Revisa la decisión, estás evaluando algo diferente..." o "¿Qué pasa si pongo un cero?".
+- Prioridad 2 (Sintaxis): Si usan mal un comando, diles "Recuerda cuál es el comando en PSeInt para entrada (Leer)".`;
+
+        // Historial de la conversación para dar contexto continuo a la IA
+        let chatHistory = [];
+
+        // ==========================================
+        // LÓGICA DE LA INTERFAZ DE USUARIO (UI)
+        // ==========================================
+        const chatContainer = document.getElementById('chat-container');
+        const chatForm = document.getElementById('chat-form');
+        const userInput = document.getElementById('user-input');
+        const sendBtn = document.getElementById('send-btn');
+        const loadingIndicator = document.getElementById('loading-indicator');
+
+        // Auto-ajustar altura del textarea
+        userInput.addEventListener('input', function() {
+            this.style.height = 'auto';
+            this.style.height = (this.scrollHeight < 120 ? this.scrollHeight : 120) + 'px';
+        });
+
+        // Permitir enviar con Enter (y Shift+Enter para salto de línea)
+        userInput.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                chatForm.dispatchEvent(new Event('submit'));
+            }
+        });
+
+        // Formateador básico de Markdown a HTML
+        function parseMarkdown(text) {
+            let html = text
+                // Bloques de código (```codigo```)
+                .replace(/```([\s\S]*?)```/g, '<pre><code>$1</code></pre>')
+                // Código en línea (`codigo`)
+                .replace(/`([^`]+)`/g, '<code>$1</code>')
+                // Negritas (**texto**)
+                .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+                // Saltos de línea
+                .replace(/\n\n/g, '</p><p>')
+                .replace(/\n/g, '<br>');
+            
+            // Envolver en párrafo inicial si no hay
+            if (!html.startsWith('<p>')) html = '<p>' + html + '</p>';
+            return html;
+        }
+
+        // Función para agregar mensajes a la pantalla
+        function appendMessage(role, text) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `flex ${role === 'user' ? 'justify-end' : 'justify-start'} max-w-full animate-fade-in`;
+            
+            const innerContent = document.createElement('div');
+            
+            if (role === 'user') {
+                // Estilo del mensaje del estudiante
+                innerContent.className = 'bg-blue-600 text-white rounded-2xl rounded-br-none px-5 py-3 max-w-[85%] shadow-md whitespace-pre-wrap';
+                innerContent.textContent = text;
+            } else {
+                // Estilo del mensaje de Julius
+                innerContent.className = 'bg-white border border-gray-200 text-gray-800 rounded-2xl rounded-bl-none px-6 py-4 max-w-[85%] shadow-sm markdown-body';
+                innerContent.innerHTML = parseMarkdown(text);
+            }
+
+            messageDiv.appendChild(innerContent);
+            chatContainer.appendChild(messageDiv);
+            
+            // Auto-scroll hacia el último mensaje
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+        }
+
+        // Manejador del envío del formulario
+        chatForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const message = userInput.value.trim();
+            if (!message) return;
+
+            // 1. Mostrar mensaje del usuario
+            appendMessage('user', message);
+            userInput.value = '';
+            userInput.style.height = 'auto'; // reset altura
+            
+            // 2. Bloquear input e indicar carga
+            userInput.disabled = true;
+            sendBtn.disabled = true;
+            sendBtn.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i>';
+            loadingIndicator.classList.remove('hidden');
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+
+            // 3. Preparar payload para la API Gemini
+            chatHistory.push({ role: "user", parts: [{ text: message }] });
+
+            const payload = {
+                contents: chatHistory,
+                systemInstruction: {
+                    parts: [{ text: systemPrompt }]
+                },
+                // Configuración para hacer al tutor un poco más determinista y analítico
+                generationConfig: {
+                    temperature: 0.3
+                }
+            };
+
+            // 4. Llamada a la API
+            try {
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                if (!response.ok) throw new Error("Error en la conexión con el servidor IA");
+
+                const data = await response.json();
+                
+                // Extraer respuesta
+                if (data.candidates && data.candidates[0].content) {
+                    const aiResponse = data.candidates[0].content.parts[0].text;
+                    
+                    // Guardar en el historial
+                    chatHistory.push({ role: "model", parts: [{ text: aiResponse }] });
+                    
+                    // Mostrar respuesta de Julius
+                    appendMessage('model', aiResponse);
+                } else {
+                    throw new Error("Formato de respuesta inesperado");
+                }
+
+            } catch (error) {
+                console.error("Error:", error);
+                // Si la API falla, intentamos usar backoff exponencial (aquí simplificado) o mostramos error.
+                // Notemos que en entornos reales de Moodle sin clave, esto fallará.
+                if (apiKey === "") {
+                    appendMessage('model', "⚠️ **Aviso del Sistema:** Parece que no has configurado la `API Key` en el código fuente. Por favor, edita el archivo HTML y coloca tu clave de Google AI Studio para que pueda conectarme a mi cerebro virtual.");
+                } else {
+                    appendMessage('model', "Ups, mi conexión a internet falló por un momento. ¿Podrías repetir lo último que dijiste?");
+                }
+                // Retirar el último mensaje de usuario del historial para no corromper la secuencia
+                chatHistory.pop();
+            } finally {
+                // 5. Restaurar UI
+                userInput.disabled = false;
+                sendBtn.disabled = false;
+                sendBtn.innerHTML = '<span class="hidden sm:inline mr-2">Enviar</span><i class="fas fa-paper-plane"></i>';
+                loadingIndicator.classList.add('hidden');
+                userInput.focus();
+                chatContainer.scrollTop = chatContainer.scrollHeight;
+            }
+        });
+
+        // Iniciar conversación al cargar la página
+        window.onload = () => {
+            // Un pequeño truco para que Julius hable primero sin que el usuario escriba:
+            // Le inyectamos una orden inicial invisible.
+            setTimeout(() => {
+                 appendMessage('model', "¡Hola! Soy **Julius Assistant**, tu compañero de programación creado por el profesor Julio Ricardo. 🤖 \n\nEstoy aquí para guiarte en PSeInt. ¿Tienes algún ejercicio o problema en mente para resolver hoy? Recuerda que usaremos nuestra Metodología del Semáforo. 🚦");
+                 // Iniciar historial con este saludo ficticio para mantener el contexto
+                 chatHistory.push({ role: "model", parts: [{ text: "¡Hola! Soy Julius Assistant, tu compañero de programación. ¿Qué algoritmo diseñaremos hoy usando el Semáforo?" }] });
+            }, 500);
+        };
+    </script>
+</body>
+</html>
