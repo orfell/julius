@@ -1,129 +1,116 @@
-# JULIUS
+# JULIUS + Traffic Light Method
 
-**AI-assisted programming education and teacher-supervised assessment**
+**Research-backed AI for programming education, formative feedback and teacher-supervised assessment**
 
-JULIUS is an educational AI initiative focused on supporting the teaching and learning of programming fundamentals. Its purpose is to help students reason about algorithmic problems, identify inputs, processes and outputs, and receive structured formative feedback while preserving the teacher's role in final academic judgment.
+JULIUS is an educational AI assistant developed for introductory programming education. It is paired with the **Traffic Light Method (Método del Semáforo)**, a structured methodology that guides students and instructors to analyze **inputs, processes and outputs before evaluating pseudocode**.
 
-The project has evolved through classroom experimentation and international research dissemination in engineering education. JULIUS is conceived as a teacher-supervised educational assistant rather than an autonomous replacement for the instructor.
+JULIUS is therefore not presented only as software. The project combines:
 
-## Purpose
+**AI assistant + pedagogical methodology + classroom experience + empirical research + teacher supervision.**
 
-JULIUS supports activities such as:
+## Core principle
 
-- analysis of programming problems before coding;
-- identification of inputs, processes and outputs;
-- support for logical and algorithmic thinking;
-- formative feedback for programming exercises;
-- teacher-supervised assessment;
-- generation of individual and group-level feedback indicators.
+> **The AI proposes, organizes and supports; the teacher reviews and decides.**
 
-## Educational approach
+The objective is to strengthen logical and algorithmic reasoning while keeping academic judgment in human hands.
 
-The project is based on a structured pedagogical workflow in which the learner is encouraged to reason before producing code. In assessment scenarios, JULIUS is used as an assistant: the AI proposes an analysis and feedback, while the teacher reviews and decides.
+## Traffic Light Method
 
-## Institutional recognition and classroom innovation
+The methodology helps organize the analysis of programming problems around three fundamental components:
 
-Before its international research dissemination, the educational approach behind JULIUS was part of a real institutional innovation process at **Unicomfacauca**.
+- **Inputs:** the data required by the problem.
+- **Processes:** calculations, transformations, decisions and operations.
+- **Outputs:** the results the algorithm must produce.
 
-In 2024, the project **“Integración de IA generativa a través de chatbots en el aula Unicomfacauca”**, developed by Julio Ricardo Martínez Montezuma, Susana Eugenia Maya Durán and María Alejandra Caicedo Bucheli, received **third place** among the best prototypes developed during Unicomfacauca's **Edutech Evolutiva** faculty training initiative.
+A traffic-light metaphor can be used to communicate the state of each element:
 
-The winning teams received a **paid academic internship at Universidad de La Sabana**. A later Unicomfacauca report confirms that the group also visited Universidad del Rosario and, at Universidad de La Sabana, interacted with leaders of the Doctorate in Educational Innovation and living labs focused on design, prototyping, coworking and neuroscience applied to education.
+- **Green:** correctly identified or sufficiently justified.
+- **Yellow:** partially correct, incomplete or requiring revision.
+- **Red:** missing, inconsistent or blocking a correct solution.
 
-This provides an institutional evidence trail that predates and complements the later peer-reviewed publications on JULIUS.
+The specific criteria depend on the teaching activity and rubric.
 
-See `docs/unicomfacauca_2024_institutional_evidence.md`.
+Full methodology: [docs/methodology/traffic-light-method.md](docs/methodology/traffic-light-method.md)
 
-## Empirical evidence from FIE 2025
+## Evidence trail
 
-JULIUS is not only a conceptual assistant or a prototype. Its use in programming education was studied in a **full research-to-practice paper** published in the proceedings of the **55th IEEE Annual Frontiers in Education Conference (FIE 2025)**.
+### 2024 — Institutional innovation at Unicomfacauca
 
-The study used a **mixed-methods approach**, combining **quantitative pre- and post-tests** with **qualitative thematic analysis**. According to the published abstract, the results showed significant improvements in:
+The project **“Integración de IA generativa a través de chatbots en el aula Unicomfacauca”**, developed by Julio Ricardo Martínez Montezuma, Susana Eugenia Maya Durán and María Alejandra Caicedo Bucheli, received **third place** in the Edutech Evolutiva 2024 educational-innovation process.
 
-- conceptual understanding;
-- logical reasoning;
-- motivation;
-- collaboration;
-- emotional well-being;
-- metacognition;
-- teamwork.
+The winning teams received a **paid academic internship at Universidad de La Sabana**. This provides institutional evidence that the initiative emerged from authentic teaching practice and educational innovation.
 
-The study also reports that JULIUS helped bridge theory and practice, supported adaptive and collaborative learning, and addressed both cognitive and affective needs in introductory programming education.
+See: [docs/unicomfacauca_2024_institutional_evidence.md](docs/unicomfacauca_2024_institutional_evidence.md)
 
-This evidence is important because it documents JULIUS as a **real educational intervention evaluated with empirical data**, rather than simply as a software demonstration.
+### 2025 — EDUNINE: methodology and virtual tutoring
 
-**Reference:**  
-Martinez, J. R., Chong, M., Maya, S., Caicedo, M. A., & Luna, A. (2025). *Enhancing Algorithmic Thinking and Emotional Resilience in Programming Education Through AI Powered Virtual Tutoring*. 55th IEEE Annual Frontiers in Education Conference (FIE 2025).  
-DOI: https://doi.org/10.1109/FIE63693.2025.11328240
+The EDUNINE 2025 workshop describes JULIUS as a chatbot supporting engineering students in basic programming courses through a **seven-step methodology** that guides the identification of algorithmic elements such as inputs, outputs, conditions and calculations.
 
-> Note: The public abstract confirms the pre/post quantitative design, qualitative analysis, and statistically significant improvements, but it does not expose the complete numerical tables. Exact sample sizes, test statistics, effect sizes, means and percentages should be copied only from the full paper or the authors' original dataset to avoid inventing values.
-
-## Research background
-
-JULIUS and the broader research line around AI in education have been disseminated through peer-reviewed IEEE venues.
-
-### 2024
-
-**Generative Artificial Intelligence Impact on Education and Industry: An Ethical Dimension**  
-Julio Ricardo Martinez Montezuma; Mario Chong  
-EDUNINE 2024 – 8th IEEE World Engineering Education Conference  
-DOI: https://doi.org/10.1109/EDUNINE60625.2024.10500608
-
-### 2025
-
-**Workshop: Classroom Digital Transformation: Chatbots as Virtual Tutors to Strengthen Logical and Algorithmic Thinking in Engineering Students**  
-Julio Ricardo Martinez-Montezuma; Susana Eugenia Maya-Duran; Maria Alejandra Caicedo-Bucheli; Ana Luna; Mario Chong  
-EDUNINE 2025 – 9th IEEE Engineering Education World Conference  
 DOI: https://doi.org/10.1109/EDUNINE62377.2025.10981418
 
-**Enhancing Algorithmic Thinking and Emotional Resilience in Programming Education Through AI Powered Virtual Tutoring**  
-Julio R. Martinez; Mario Chong; Susana Maya; Maria Alejandra Caicedo; Ana Luna  
-IEEE Frontiers in Education Conference (FIE 2025)  
+### 2025 — FIE: empirical classroom evidence
+
+The FIE 2025 research-to-practice paper reports a real educational experience with JULIUS using a **mixed-methods approach**, including quantitative pre/post assessment and qualitative thematic analysis.
+
+The published record reports significant improvements in conceptual understanding, logical reasoning, motivation and collaboration, together with improvements in emotional well-being, metacognition and teamwork.
+
 DOI: https://doi.org/10.1109/FIE63693.2025.11328240
 
-### 2026
+See: [docs/fie2025_empirical_evidence.md](docs/fie2025_empirical_evidence.md)
 
-**Workshop: AI Innovative Approach Assessment. Applied to the Programming Courses with JULIUS**  
-Julio Ricardo Martinez-Montezuma; Susana Eugenia Maya-Duran; Ana Luna; Mario Chong  
-EDUNINE 2026  
+### 2026 — EDUNINE: Traffic Light Method and assessment
+
+The EDUNINE 2026 publication explicitly identifies the methodology as the **Traffic Light Method**. JULIUS analyzes inputs, processes and outputs before evaluating pseudocode, generates personalized reports and group-performance indicators, and identifies error patterns to support targeted pedagogical intervention.
+
 DOI: https://doi.org/10.1109/EDUNINE62390.2026.11546813
+
+## Research and publications
+
+The broader research line includes work on generative AI ethics, educational chatbots, algorithmic thinking, emotional resilience and teacher-supervised assessment.
+
+See: [docs/publications.md](docs/publications.md)
+
+## Open educational purpose
+
+The repository is being developed as an open space for educators and researchers who want to reproduce, test, adapt or improve:
+
+- the Traffic Light Method;
+- AI-assisted formative feedback;
+- teacher-supervised assessment;
+- educational assistants for programming;
+- reproducible classroom experiments;
+- research artifacts around AI in education.
+
+## Future development with Claude
+
+The project is being prepared for an application to **Claude for Open Source**. The purpose is to continue creating AI tools for classroom use with Claude supporting development, documentation, testing, prompt design, reproducibility and teacher-supervised educational workflows.
+
+The application does not claim adoption metrics that the repository does not currently have. Instead, it documents the project's real institutional experience, peer-reviewed research and open educational direction.
+
+See: [docs/claude-for-open-source.md](docs/claude-for-open-source.md)
 
 ## Related educational AI projects
 
-The author's GitHub profile also contains complementary educational and AI prototypes, including:
+The maintainer also develops complementary educational and AI prototypes:
 
-- `petalos_mvp`: applied MVP combining a web interface, Python and bot components.
-- `vozgen-ai`: TypeScript-based AI/voice experimentation.
-- `ReglaChat`: assistant for consulting university regulations.
-- `ML-b`: educational material related to machine learning and data cleaning.
-- `Saber-IA`: AI-supported preparation project (currently private).
-
-These projects are independent prototypes and should not be interpreted as dependencies of JULIUS unless explicitly documented.
-
-## Repository status
-
-This repository is currently being reorganized to become a documented research and educational open-source project. The current public implementation is an early version.
-
-Planned documentation includes:
-
-- methodology;
-- classroom-use examples;
-- architecture;
-- reproducible examples;
-- contribution guidelines;
-- citation metadata.
+- `petalos_mvp` — Python/web/bot MVP.
+- `vozgen-ai` — TypeScript-based AI and voice experimentation.
+- `ReglaChat` — assistant for consulting university regulations.
+- `ML-b` — machine-learning educational material.
+- `Saber-IA` — AI-supported educational preparation project (currently private).
 
 ## Responsible use
 
-JULIUS is intended for educational support. It should not be used as an unsupervised grading authority. Academic decisions remain the responsibility of the instructor or educational institution.
+JULIUS should not be used as an unsupervised grading authority. AI-generated analysis and feedback must remain subject to teacher review, institutional rules and appropriate privacy safeguards.
 
 ## Contributing
 
-Contributions from educators, researchers and developers are welcome. See `CONTRIBUTING.md`.
+Educators, researchers and developers are welcome to contribute. See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Citation
 
-If you use JULIUS in research or educational work, please cite the relevant research publication and the repository metadata in `CITATION.cff`.
+Citation metadata is available in [CITATION.cff](CITATION.cff).
 
-## License
+## License status
 
-A permissive open-source license is proposed for the repository. Before publishing a license, the maintainer should confirm that all code, media, institutional materials and third-party assets included in the repository can legally be redistributed under that license.
+An open-source license has **not yet been selected**. Before publishing one, ownership and redistribution rights for existing code, media, institutional material and third-party assets should be confirmed.
