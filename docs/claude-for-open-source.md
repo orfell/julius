@@ -17,6 +17,17 @@ The project grows from a documented sequence of educational innovation:
 - **2025 — FIE:** JULIUS was evaluated in a real educational experience using mixed methods, including quantitative pre/post assessment and qualitative thematic analysis.
 - **2026 — EDUNINE:** the methodology was explicitly presented as the **Traffic Light Method**, supporting teacher-supervised assessment through analysis of inputs, processes and outputs, personalized reports, group indicators and error-pattern identification.
 
+## Academic and community mission
+
+This project is fundamentally **academic, scientific and educational**. JULIUS and the Traffic Light Method are not being developed as commercial software products. Their purpose is to contribute knowledge, methods, classroom evidence and reusable educational practices to the academic community.
+
+The work has been presented through recognized international engineering-education venues and institutional innovation initiatives. The project seeks to continue that trajectory by creating additional AI-enabled classroom tools, documenting them openly and sharing the resulting methodology and evidence with educators and researchers.
+
+Claude support would therefore be used to accelerate **non-commercial educational research and open academic development**: prototyping, documentation, reproducibility, code improvement, classroom examples, responsible AI workflows and teacher-supervised assessment.
+
+The project is still evolving and should be understood as a scientific contribution in active development, already applied in authentic educational contexts with reported results.
+
+
 ## Why Claude is relevant
 
 The purpose of seeking support through **Claude for Open Source** is to continue creating and documenting AI tools for the classroom using Claude as part of the development workflow.
