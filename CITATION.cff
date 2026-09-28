@@ -1,0 +1,26 @@
+cff-version: 1.2.0
+message: "If you use JULIUS in research or teaching, please cite this software and the relevant associated publication."
+title: "JULIUS: AI-assisted programming education and teacher-supervised assessment"
+type: software
+authors:
+  - family-names: "Martinez-Montezuma"
+    given-names: "Julio Ricardo"
+repository-code: "https://github.com/orfell/julius"
+url: "https://github.com/orfell/julius"
+license: "NOASSERTION"
+version: "0.1.0"
+date-released: "2026-07-11"
+preferred-citation:
+  type: conference-paper
+  title: "Workshop: AI Innovative Approach Assessment. Applied to the Programming Courses with JULIUS"
+  authors:
+    - family-names: "Martinez-Montezuma"
+      given-names: "Julio Ricardo"
+    - family-names: "Maya-Duran"
+      given-names: "Susana Eugenia"
+    - family-names: "Luna"
+      given-names: "Ana"
+    - family-names: "Chong"
+      given-names: "Mario"
+  year: 2026
+  doi: "10.1109/EDUNINE62390.2026.11546813"
