@@ -32,6 +32,21 @@ The specific criteria depend on the teaching activity and rubric.
 
 Full methodology: [docs/methodology/traffic-light-method.md](docs/methodology/traffic-light-method.md)
 
+## Intellectual-property evidence in Colombia
+
+The methodology has a **registered literary work certificate issued by Colombia's Dirección Nacional de Derecho de Autor (DNDA)**.
+
+- **Registered title:** *Metodología innovadora para la enseñanza de algoritmia con chatbots educativos*
+- **Year of creation:** 2024
+- **Registration date:** 24 January 2025
+- **Book–Volume–Entry:** 10-1282-77
+- **Class:** Unpublished literary work
+- **Literary field:** Didactic
+
+The certificate recognizes the materialized academic work behind the methodology. It complements — but does not replace — the research, institutional and classroom evidence described below.
+
+See: [docs/intellectual-property-and-academic-sharing.md](docs/intellectual-property-and-academic-sharing.md)
+
 ## Evidence trail
 
 ### 2024 — Institutional innovation at Unicomfacauca
@@ -91,12 +106,11 @@ The work has been shared through recognized academic venues and institutional in
 
 The project remains a work in progress. New tools, implementations and classroom experiences may continue to evolve from the methodology, but the central mission is educational: to explore responsible ways of integrating artificial intelligence into teaching and learning while preserving teacher judgment and academic purpose.
 
-
 ## Future development with Claude
 
 The project is being prepared for an application to **Claude for Open Source**. The purpose is to continue creating AI tools for classroom use with Claude supporting development, documentation, testing, prompt design, reproducibility and teacher-supervised educational workflows.
 
-The application does not claim adoption metrics that the repository does not currently have. Instead, it documents the project's real institutional experience, peer-reviewed research and open educational direction.
+The application does not claim adoption metrics that the repository does not currently have. Instead, it documents the project's real institutional experience, peer-reviewed research, registered academic work and open educational direction.
 
 See: [docs/claude-for-open-source.md](docs/claude-for-open-source.md)
 
@@ -121,15 +135,6 @@ Educators, researchers and developers are welcome to contribute. See [CONTRIBUTI
 ## Citation
 
 Citation metadata is available in [CITATION.cff](CITATION.cff).
-
-## Intellectual property and academic sharing
-
-The JULIUS methodology and its associated materials are part of an ongoing academic development process. The maintainer reports having initiated/obtained copyright-related protection in Colombia for JULIUS as an innovative methodology.
-
-Because the public web search does not currently expose a verifiable registration number or certificate, this repository does **not** publish an unverified registration identifier. The corresponding record or certificate should be added here once its official reference is available.
-
-Copyright protection and open academic dissemination are not contradictory: the goal is to preserve authorship and attribution while enabling responsible educational reuse under terms that are legally appropriate.
-
 
 ## License status
 
