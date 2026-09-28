@@ -81,6 +81,17 @@ The repository is being developed as an open space for educators and researchers
 - reproducible classroom experiments;
 - research artifacts around AI in education.
 
+## Academic and non-commercial mission
+
+JULIUS and the Traffic Light Method are developed primarily as **academic and scientific contributions to the educational community**.
+
+The project is not conceived as a commercial software product or as a marketplace offering. Its purpose is to contribute reusable knowledge, methodology, documented classroom experience and research evidence to educators, researchers and students.
+
+The work has been shared through recognized academic venues and institutional innovation processes. Its value is therefore measured primarily through **educational usefulness, research contribution, reproducibility, dissemination and community benefit**, rather than through software sales or commercial adoption.
+
+The project remains a work in progress. New tools, implementations and classroom experiences may continue to evolve from the methodology, but the central mission is educational: to explore responsible ways of integrating artificial intelligence into teaching and learning while preserving teacher judgment and academic purpose.
+
+
 ## Future development with Claude
 
 The project is being prepared for an application to **Claude for Open Source**. The purpose is to continue creating AI tools for classroom use with Claude supporting development, documentation, testing, prompt design, reproducibility and teacher-supervised educational workflows.
@@ -110,6 +121,15 @@ Educators, researchers and developers are welcome to contribute. See [CONTRIBUTI
 ## Citation
 
 Citation metadata is available in [CITATION.cff](CITATION.cff).
+
+## Intellectual property and academic sharing
+
+The JULIUS methodology and its associated materials are part of an ongoing academic development process. The maintainer reports having initiated/obtained copyright-related protection in Colombia for JULIUS as an innovative methodology.
+
+Because the public web search does not currently expose a verifiable registration number or certificate, this repository does **not** publish an unverified registration identifier. The corresponding record or certificate should be added here once its official reference is available.
+
+Copyright protection and open academic dissemination are not contradictory: the goal is to preserve authorship and attribution while enabling responsible educational reuse under terms that are legally appropriate.
+
 
 ## License status
 
